@@ -1,27 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="py-5">
-    <div class="container">
+<section class="skills-section">
+    <div class="container position-relative">
+        <span class="section-bg-title">SKILLS</span>
         <h2 class="section-title text-center">Mes <span>Compétences</span></h2>
-        <div class="row">
-            @forelse($competences as $competence)
-            <div class="col-md-6 mb-4">
-                <div class="card p-3">
-                    <div class="d-flex justify-content-between mb-1">
-                        <span class="fw-bold">{{ $competence->name }}</span>
-                        <span class="text-danger">{{ $competence->level }}%</span>
-                    </div>
-                    <small class="text-muted mb-2">{{ $competence->category }}</small>
-                    <div class="progress">
-                        <div class="skill-bar progress-bar" style="width: {{ $competence->level }}%"></div>
+
+        @php $categories = $competences->groupBy('category'); @endphp
+
+        @foreach($categories as $categorie => $items)
+        <div class="mb-5">
+            <h4 class="category-title">{{ $categorie }}</h4>
+            <div class="row">
+                @foreach($items as $competence)
+                <div class="col-6 col-md-3 col-lg-2 text-center mb-4 fade-in">
+                    <div class="skill-icon-box">
+                        <i class="{{ $competence->icon }} colored"></i>
+                        <p class="skill-name">{{ $competence->name }}</p>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @empty
-            <p class="text-center text-muted">Aucune compétence pour le moment.</p>
-            @endforelse
         </div>
+        @endforeach
+
     </div>
 </section>
 @endsection

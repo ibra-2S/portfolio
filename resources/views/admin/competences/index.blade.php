@@ -16,7 +16,7 @@
                     <th>#</th>
                     <th>Nom</th>
                     <th>Catégorie</th>
-                    <th>Niveau</th>
+                    <th>Icône</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -27,10 +27,8 @@
                     <td>{{ $competence->name }}</td>
                     <td><span class="badge bg-secondary">{{ $competence->category }}</span></td>
                     <td>
-                        <div class="progress" style="height: 10px; width: 150px;">
-                            <div class="progress-bar bg-danger" style="width: {{ $competence->level }}%"></div>
-                        </div>
-                        <small>{{ $competence->level }}%</small>
+                        <i class="{{ $competence->icon }} colored" style="font-size: 2rem;"></i>
+                        <small class="ms-2">{{ $competence->icon }}</small>
                     </td>
                     <td>
                         <a href="{{ route('admin.competences.edit', $competence) }}" class="btn btn-sm btn-warning">

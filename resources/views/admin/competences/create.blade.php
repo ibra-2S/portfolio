@@ -18,14 +18,14 @@
                 <option value="Frontend" {{ old('category') == 'Frontend' ? 'selected' : '' }}>Frontend</option>
                 <option value="Backend" {{ old('category') == 'Backend' ? 'selected' : '' }}>Backend</option>
                 <option value="Base de données" {{ old('category') == 'Base de données' ? 'selected' : '' }}>Base de données</option>
-                <option value="Outils" {{ old('category') == 'Outils' ? 'selected' : '' }}>Outils</option>
+                <option value="Cloud et Outils" {{ old('category') == 'Outils' ? 'selected' : '' }}>Cloud et Outils</option>
             </select>
             @error('category') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
         <div class="mb-3">
-            <label class="form-label">Niveau : <span id="levelValue">80</span>%</label>
-            <input type="range" name="level" class="form-range" min="0" max="100" value="{{ old('level', 80) }}"
-                oninput="document.getElementById('levelValue').textContent = this.value">
+            <label class="form-label">Icône Devicon</label>
+            <input type="text" name="icon" class="form-control" value="{{ old('icon') }}" placeholder="ex: devicon-laravel-plain, devicon-php-plain">
+            <small class="text-muted">Trouve les icônes sur <a href="https://devicon.dev" target="_blank">devicon.dev</a></small>
         </div>
         <a href="{{ route('admin.competences.index') }}" class="btn btn-secondary">Annuler</a>
         <button type="submit" class="btn btn-primary">

@@ -8,19 +8,32 @@
     <div class="container">
         <h1>Bonjour, je suis <span id="typing"></span><span class="cursor">|</span></h1>
         <p class="lead mt-3">Développeur Web Full Stack passionné</p>
-        <a href="{{ route('projets') }}" class="btn btn-primary btn-lg mt-3 me-2">Voir mes projets</a>
-        <a href="{{ route('contact') }}" class="btn btn-outline-light btn-lg mt-3">Me contacter</a>
-        <a href="{{ route('cv.download') }}" class="btn btn-outline-light btn-lg mt-3"><i class="fas fa-download"></i> Télécharger mon CV</a>
+        <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('contact') }}" class="btn btn-primary btn-lg">
+                <i class="fas fa-envelope"></i> Me contacter
+            </a>
+            <a href="{{ route('cv.download') }}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-download"></i> Télécharger mon CV
+            </a>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-center gap-3">
+            <a href="https://www.linkedin.com/in/ibrahima-sory-soumah-697552337/" target="_blank" class="social-btn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/224623134751" target="_blank" class="social-btn">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://github.com" target="_blank" class="social-btn">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
     </div>
 </section>
 
 </section>
 
-<div class="wave-divider" style="background:#111122; margin-top:-2px;">
-    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#0f0f1a" d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z"/>
-    </svg>
-</div>
+
 
 <!-- About Section -->
 <section class="about-section" style="background:#111122;">
@@ -29,18 +42,18 @@
         <h2 class="section-title text-center" style="color:white;">À <span>Propos de Moi</span></h2>
         <div class="row align-items-center">
             <div class="col-md-6 fade-in">
-                <h4 style="color:#f5a623;" class="mb-4">PERSONAL INFOS</h4>
+                <h4 style="color:#f5a623;" class="mb-4">INFOS PERSONEL</h4>
                 <div class="row">
                     <div class="col-6">
-                        <p class="info-item">Prénom : <span>Ton Prénom</span></p>
-                        <p class="info-item">Nom : <span>Ton Nom</span></p>
-                        <p class="info-item">Âge : <span>Ton Âge</span></p>
-                        <p class="info-item">Nationalité : <span>Ta Nationalité</span></p>
+                        <p class="info-item">Prénom : <span>IBRAHIMA SORY</span></p>
+                        <p class="info-item">Nom : <span>SOUMAH</span></p>
+                        <p class="info-item">Âge : <span>24 ANS</span></p>
+                        <p class="info-item">Nationalité : <span>GUINÉENNE</span></p>
                     </div>
                     <div class="col-6">
-                        <p class="info-item">Adresse : <span>Ta Ville</span></p>
-                        <p class="info-item">Téléphone : <span>+XXX XXX XXX</span></p>
-                        <p class="info-item">Email : <span>ton@email.com</span></p>
+                        <p class="info-item">Adresse : <span>CONAKRY, GBESSIA PRES DU SIEGE RPG</span></p>
+                        <p class="info-item">Téléphone : <span>+224 623 134 751</span></p>
+                        <p class="info-item">Email : <span>ibrahimfatou01@email.com</span></p>
                         <p class="info-item">Freelance : <span>Disponible</span></p>
                     </div>
                 </div>
@@ -82,7 +95,7 @@
 
 </section>
 
-<div class="wave-divider" style="transform: rotate(180deg); background:#0f0f1a; margin-top:-2px;">
+<div class="wave-divider" style="background:#0f0f1a; margin-top:-2px;">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg">
         <path fill="#111122" d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z"/>
     </svg>
@@ -134,23 +147,20 @@
 <section class="skills-section" style="background:#111122;">
     <div class="container position-relative">
         <span class="section-bg-title">SKILLS</span>
-        <h2 class="section-title text-center" style="color:white;">Mes <span>Compétences</span></h2>
+        <h2 class="section-title text-center">Mes <span>Compétences</span></h2>
 
-        @php
-            $categories = $competences->groupBy('category');
-        @endphp
+        @php $categories = $competences->groupBy('category'); @endphp
 
         @foreach($categories as $categorie => $items)
         <div class="mb-5">
             <h4 class="category-title">{{ $categorie }}</h4>
-            <div class="row justify-content-center">
+            <div class="row">
                 @foreach($items as $competence)
-                <div class="col-6 col-md-3 col-lg-2 skill-circle-wrapper fade-in">
-                    <div class="skill-circle-container">
-                        <canvas class="skill-donut" data-level="{{ $competence->level }}" width="120" height="120"></canvas>
-                        <div class="skill-value">{{ $competence->level }}%</div>
+                <div class="col-6 col-md-3 col-lg-2 text-center mb-4 fade-in">
+                    <div class="skill-icon-box">
+                        <i class="{{ $competence->icon }} colored"></i>
+                        <p class="skill-name">{{ $competence->name }}</p>
                     </div>
-                    <div class="skill-label">{{ $competence->name }}</div>
                 </div>
                 @endforeach
             </div>
@@ -162,7 +172,7 @@
 
 </section>
 
-<div class="wave-divider" style="transform: rotate(180deg); background:#0f0f1a; margin-top:-2px;">
+<div class="wave-divider" style="background:#0f0f1a; margin-top:-2px;">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg">
         <path fill="#111122" d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z"/>
     </svg>

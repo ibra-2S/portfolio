@@ -11,11 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ route('home') }}">
                 <i class="fas fa-code" style="color:#f8f7f5;"></i>
-                <span style="color:#f5a623; font-size:1.5rem; letter-spacing:2px; text-transform:uppercase;">Ibra2S</span>
+                <span style="color:#f5a623; font-size:1.5rem; letter-spacing:2px;">Ibra2S</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -37,8 +37,63 @@
 
     @yield('content')
 
-    <footer class="text-center">
-        <p>© 2025 Mon Portfolio. Fait avec ❤️ et Laravel</p>
+    <footer>
+        <div class="container">
+            <div class="row py-5">
+                <!-- Colonne 1 - Présentation -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-white mb-3"><span style="color:#f5a623;">Ibrahima Sory Soumah</span></h5>
+                    <p style="color:#aaaaaa;">Étudiant en Informatique passionné par le développement web et les nouvelles technologies.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="https://www.linkedin.com/in/ibrahima-sory-soumah-697552337/" target="_blank" class="social-btn-footer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="social-btn-footer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="ibrahimfatou01@gmail.com" class="social-btn-footer">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/224623134751" target="_blank" class="social-btn-footer">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonne 2 - Liens -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-white mb-3">Focus</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{{ route('projets') }}" class="footer-link">Projets</a></li>
+                        <li class="mb-2"><a href="{{ route('experiences') }}" class="footer-link">Expériences</a></li>
+                        <li class="mb-2"><a href="{{ route('competences') }}" class="footer-link">Compétences</a></li>
+                        <li class="mb-2"><a href="{{ route('contact') }}" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3 - Contact -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-white mb-3">Contact</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2" style="color:#aaaaaa;">
+                            <i class="fas fa-envelope me-2" style="color:#f5a623;"></i> ibrahimfatou01@email.com
+                        </li>
+                        <li class="mb-2" style="color:#aaaaaa;">
+                            <i class="fas fa-phone me-2" style="color:#f5a623;"></i> +224 623 134 751
+                        </li>
+                        <li class="mb-2" style="color:#aaaaaa;">
+                            <i class="fas fa-map-marker-alt me-2" style="color:#f5a623;"></i> Conakry, Guinée
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr style="border-color:#ffffff15;">
+
+            <div class="text-center py-3" style="color:#aaaaaa;">
+                © 2026 <span style="color:#f5a623;">Ibrahima Sory Soumah</span>. Merci pour la visite!
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>

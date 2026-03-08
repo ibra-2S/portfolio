@@ -24,7 +24,7 @@ class CompetenceController extends Controller
         $request->validate([
             'name' => 'required',
             'category' => 'required',
-            'level' => 'required|integer|min:0|max:100',
+            'icon' => 'required',
         ]);
 
         Competence::create($request->all());
@@ -41,7 +41,7 @@ class CompetenceController extends Controller
         $request->validate([
             'name' => 'required',
             'category' => 'required',
-            'level' => 'required|integer|min:0|max:100',
+            'icon' => 'required',
         ]);
 
         $competence->update($request->all());
