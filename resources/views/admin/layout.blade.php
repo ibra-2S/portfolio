@@ -41,6 +41,13 @@
         <a class="nav-link {{ request()->is('admin/contacts*') ? 'active' : '' }}" href="{{ route('admin.contacts.index') }}">
             <i class="fas fa-envelope"></i> Messages
         </a>
+        <hr style="border-color: #ffffff30;">
+            <form action="{{ route('admin.logout') }}" method="POST">
+                @csrf
+                <button   button type="submit" class="nav-link btn btn-link text-start w-100" style="color:#e94560;">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </form>
     </nav>
 </div>
 

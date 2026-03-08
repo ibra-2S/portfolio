@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -24,7 +25,7 @@ class ContactController extends Controller
     Contact::create($request->all());
 
     // Envoyer email
-    \Mail::raw("
+    Mail::raw("
         Nouveau message de : {$request->name}
         Email : {$request->email}
         Sujet : {$request->subject}
