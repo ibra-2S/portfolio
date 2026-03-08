@@ -4,7 +4,7 @@
 <h1 class="page-title">➕ Ajouter une expérience</h1>
 
 <div class="card p-4">
-    <form action="{{ route('admin.experiences.store') }}" method="POST">
+    <form action="{{ route('admin.experiences.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label class="form-label">Titre</label>
@@ -36,6 +36,11 @@
             @error('type') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
         <a href="{{ route('admin.experiences.index') }}" class="btn btn-secondary">Annuler</a>
+        <div class="mb-3">
+            <label class="form-label">Justificatif (PDF, JPG, PNG)</label>
+            <input type="file" name="fichier" class="form-control" accept=".pdf,.jpg,.png">
+            <small class="text-muted">Optionnel - Max 2MB</small>
+        </div>
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-save"></i> Enregistrer
         </button>

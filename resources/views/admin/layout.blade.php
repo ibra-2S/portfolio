@@ -38,6 +38,9 @@
         <a class="nav-link" href="{{ route('home') }}" target="_blank">
             <i class="fas fa-eye"></i> Voir le portfolio
         </a>
+        <a class="nav-link {{ request()->is('admin/contacts*') ? 'active' : '' }}" href="{{ route('admin.contacts.index') }}">
+            <i class="fas fa-envelope"></i> Messages
+        </a>
     </nav>
 </div>
 

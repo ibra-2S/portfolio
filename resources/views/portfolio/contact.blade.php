@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="py-5">
-    <div class="container">
+<section class="py-5 contact-section">
+    <div class="container position-relative">
+        <span class="section-bg-title">Entrer en Contact</span>
         <h2 class="section-title text-center">Me <span>Contacter</span></h2>
         <div class="row justify-content-center">
             <div class="col-md-8">

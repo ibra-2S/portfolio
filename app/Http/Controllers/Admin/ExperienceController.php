@@ -20,18 +20,25 @@ class ExperienceController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'organization' => 'required',
-            'period' => 'required',
-            'description' => 'required',
-            'type' => 'required',
-        ]);
+{
+    $request->validate([
+        'title' => 'required',
+        'organization' => 'required',
+        'period' => 'required',
+        'description' => 'required',
+        'type' => 'required',
+        'fichier' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
+    ]);
 
-        Experience::create($request->all());
-        return redirect()->route('admin.experiences.index')->with('success', 'Expérience ajoutée !');
+    $data = $request->all();
+
+    if ($request->hasFile('fichier')) {
+        $data['fichier'] = $request->file('fichier')->store('justificatifs', 'public');
     }
+
+    Experience::create($data);
+    return redirect()->route('admin.experiences.index')->with('success', 'Expérience ajoutée !');
+}
 
     public function edit(Experience $experience)
     {
@@ -39,18 +46,25 @@ class ExperienceController extends Controller
     }
 
     public function update(Request $request, Experience $experience)
-    {
-        $request->validate([
-            'title' => 'required',
-            'organization' => 'required',
-            'period' => 'required',
-            'description' => 'required',
-            'type' => 'required',
-        ]);
+{
+    $request->validate([
+        'title' => 'required',
+        'organization' => 'required',
+        'period' => 'required',
+        'description' => 'required',
+        'type' => 'required',
+        'fichier' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
+    ]);
 
-        $experience->update($request->all());
-        return redirect()->route('admin.experiences.index')->with('success', 'Expérience modifiée !');
+    $data = $request->all();
+
+    if ($request->hasFile('fichier')) {
+        $data['fichier'] = $request->file('fichier')->store('justificatifs', 'public');
     }
+
+    $experience->update($data);
+    return redirect()->route('admin.experiences.index')->with('success', 'Expérience modifiée !');
+}
 
     public function destroy(Experience $experience)
     {

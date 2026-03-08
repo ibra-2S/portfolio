@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="py-5">
-    <div class="container">
+<section class="py-5 projets-section">
+    <div class="container position-relative">
+        <span class="section-bg-title">PROJECTS</span>
         <h2 class="section-title text-center">Mes <span>Projets</span></h2>
         <div class="row">
             @forelse($projets as $projet)

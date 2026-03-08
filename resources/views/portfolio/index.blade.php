@@ -2,31 +2,38 @@
 
 @section('content')
 
-<!-- Hero Section -->
-<section class="hero text-center" style="background:#0f0f1a;">
+<section class="hero">
     <div id="particles-js"></div>
-    <div class="container">
-        <h1>Bonjour, je suis <span id="typing"></span><span class="cursor">|</span></h1>
-        <p class="lead mt-3">Développeur Web Full Stack passionné</p>
-        <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
-            <a href="{{ route('contact') }}" class="btn btn-primary btn-lg">
-                <i class="fas fa-envelope"></i> Me contacter
-            </a>
-            <a href="{{ route('cv.download') }}" class="btn btn-outline-light btn-lg">
-                <i class="fas fa-download"></i> Télécharger mon CV
-            </a>
-        </div>
-
-        <div class="mt-4 d-flex justify-content-center gap-3">
-            <a href="https://www.linkedin.com/in/ibrahima-sory-soumah-697552337/" target="_blank" class="social-btn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://wa.me/224623134751" target="_blank" class="social-btn">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://github.com" target="_blank" class="social-btn">
-                <i class="fab fa-github"></i>
-            </a>
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h1>Bonjour, je suis <span id="typing"></span><span class="cursor">|</span></h1>
+                <p class="lead mt-3">Étudiant en Informatique passionné par le développement web</p>
+                <div class="mt-4 d-flex gap-3 flex-wrap">
+                    <a href="{{ route('contact') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope"></i> Me contacter
+                    </a>
+                    <a href="{{ route('cv.download') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-download"></i> Télécharger mon CV
+                    </a>
+                </div>
+                <div class="mt-4 d-flex gap-3">
+                    <a href="https://linkedin.com/in/TON_PROFIL" target="_blank" class="social-btn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://wa.me/TON_NUMERO" target="_blank" class="social-btn">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://github.com/TON_USERNAME" target="_blank" class="social-btn">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-5 text-center">
+                <div class="photo-wrapper-right">
+                    <img src="{{ asset('images/photo.jpg') }}" alt="Photo" class="hero-photo-right">
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -179,27 +186,49 @@
 </div>
 
 <!-- Expériences -->
-<section class="py-5 experiences-section" style="background:#0f0f1a;"s>
+<section class="py-5 experiences-section" style="background:#0f0f1a;">
     <div class="container position-relative">
         <span class="section-bg-title">PARCOURS</span>
         <h2 class="section-title text-center">Études & <span>Expériences</span></h2>
         <div class="row">
-            @forelse($experiences as $experience)
-            <div class="col-md-6 mb-4 fade-in">
-                <div class="card h-100 p-3">
-                    <div class="d-flex align-items-center mb-2">
-                        <i class="fas {{ $experience->type == 'education' ? 'fa-graduation-cap' : 'fa-briefcase' }} fa-2x text-danger me-3"></i>
+            <div class="col-md-6">
+                <h4 class="text-center mb-4" style="color:#f5a623;"><i class="fas fa-graduation-cap me-2"></i> Formation</h4>
+                @foreach($experiences->where('type', 'education') as $exp)
+                <div class="card mb-3 p-3 fade-in">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
-                            <h5 class="mb-0">{{ $experience->title }}</h5>
-                            <small class="text-muted">{{ $experience->organization }} | {{ $experience->period }}</small>
+                            <h5>{{ $exp->title }}</h5>
+                            <small style="color:#f5a623;">{{ $exp->organization }} | {{ $exp->period }}</small>
                         </div>
+                        @if($exp->fichier)
+                        <a href="{{ asset('storage/'.$exp->fichier) }}" target="_blank" class="btn btn-sm" style="background:#f5a623; color:#000; border-radius:20px;">
+                            <i class="fas fa-download"></i>
+                        </a>
+                        @endif
                     </div>
-                    <p class="text-muted">{{ $experience->description }}</p>
+                    <p class="text-muted">{{ $exp->description }}</p>
                 </div>
+                @endforeach
             </div>
-            @empty
-            <p class="text-center text-muted">Aucune expérience pour le moment.</p>
-            @endforelse
+            <div class="col-md-6">
+                <h4 class="text-center mb-4" style="color:#f5a623;"><i class="fas fa-briefcase me-2"></i> Expériences</h4>
+                @foreach($experiences->where('type', 'experience') as $exp)
+                <div class="card mb-3 p-3 fade-in">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h5>{{ $exp->title }}</h5>
+                            <small style="color:#f5a623;">{{ $exp->organization }} | {{ $exp->period }}</small>
+                        </div>
+                        @if($exp->fichier)
+                        <a href="{{ asset('storage/'.$exp->fichier) }}" target="_blank" class="btn btn-sm" style="background:#f5a623; color:#000; border-radius:20px;">
+                            <i class="fas fa-download"></i>
+                        </a>
+                        @endif
+                    </div>
+                    <p class="text-muted">{{ $exp->description }}</p>
+                </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>

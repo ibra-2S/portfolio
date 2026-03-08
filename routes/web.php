@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ProjetController;
 use App\Http\Controllers\Admin\CompetenceController;
 use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::get('/projets', [PortfolioController::class, 'projets'])->name('projets');
@@ -18,6 +19,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('projets', ProjetController::class);
     Route::resource('competences', CompetenceController::class);
     Route::resource('experiences', ExperienceController::class);
+    Route::get('contacts', [AdminContactController::class, 'index'])->name('contacts.index');
+    Route::delete('contacts/{contact}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
 });
 Route::get('/cv/cv.pdf', function () {
     $path = public_path('cv/cv.pdf');

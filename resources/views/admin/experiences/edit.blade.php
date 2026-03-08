@@ -4,7 +4,7 @@
 <h1 class="page-title">✏️ Modifier l'expérience</h1>
 
 <div class="card p-4">
-    <form action="{{ route('admin.experiences.update', $experience) }}" method="POST">
+    <form action="{{ route('admin.experiences.update', $experience) }}" method="POST" enctype="multipart/form-data">
         @csrf @method('PUT')
         <div class="mb-3">
             <label class="form-label">Titre</label>
@@ -36,6 +36,18 @@
             @error('type') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
         <a href="{{ route('admin.experiences.index') }}" class="btn btn-secondary">Annuler</a>
+        <div class="mb-3">
+            <label class="form-label">Justificatif (PDF, JPG, PNG)</label>
+            @if($experience->fichier)
+            <div class="mb-2">
+                <a href="{{ asset('storage/'.$experience->fichier) }}" target="_blank" class="btn btn-sm btn-outline-warning">
+                    <i class="fas fa-file"></i> Voir le justificatif actuel
+                </a>
+            </div>
+            @endif
+            <input type="file" name="fichier" class="form-control" accept=".pdf,.jpg,.png">
+            <small class="text-muted">Laisser vide pour garder l'actuel</small>
+        </div>
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-save"></i> Mettre à jour
         </button>

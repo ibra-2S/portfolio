@@ -608,3 +608,72 @@ body.light-mode .social-btn:hover {
     background: #f5a623;
     color: #000;
 }
+
+/* ===== PHOTO HERO ===== */
+.hero-photo-right {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #f5a623;
+    box-shadow: 0 0 30px rgba(245, 166, 35, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.photo-wrapper-right {
+    position: relative;
+    display: inline-block;
+    margin-right: -40px;
+}
+
+.photo-wrapper-right::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    border: 2px dashed #f5a623;
+    opacity: 0.4;
+    animation: rotate 10s linear infinite;
+}
+
+.photo-wrapper-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 2px dashed #f5a623;
+    opacity: 0.2;
+    animation: rotate 15s linear infinite reverse;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-photo-right,
+    .photo-wrapper-right {
+        display: none;
+    }
+}
+
+.projets-section,
+.skills-section,
+.contact-section,
+.experiences-section {
+    padding-top: 100px !important;
+}
