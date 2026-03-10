@@ -16,7 +16,7 @@ Route::get('/competences', [PortfolioController::class, 'competences'])->name('c
 Route::get('/experiences', [PortfolioController::class, 'experiences'])->name('experiences');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-Route::get('/cv', [PortfolioController::class, 'downloadCV'])->name('cv.download');
+Route::get('/cv/cv.pdf', [PortfolioController::class, 'downloadCV'])->name('cv.download');
 
 // Routes admin login
 Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');

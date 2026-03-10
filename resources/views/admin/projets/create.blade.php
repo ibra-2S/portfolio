@@ -4,7 +4,7 @@
 <h1 class="page-title">➕ Ajouter un projet</h1>
 
 <div class="card p-4">
-    <form action="{{ route('admin.projets.store') }}" method="POST">
+    <form action="{{ route('admin.projets.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label class="form-label">Titre</label>
@@ -25,6 +25,11 @@
             <input type="text" name="link" class="form-control" value="{{ old('link') }}" placeholder="https://...">
         </div>
         <a href="{{ route('admin.projets.index') }}" class="btn btn-secondary">Annuler</a>
+        <div class="mb-3">
+            <label class="form-label">Image du projet</label>
+            <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png">
+            <small class="text-muted">Optionnel - Max 2MB</small>
+        </div>
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-save"></i> Enregistrer
         </button>

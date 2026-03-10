@@ -4,7 +4,7 @@
 <h1 class="page-title">✏️ Modifier le projet</h1>
 
 <div class="card p-4">
-    <form action="{{ route('admin.projets.update', $projet) }}" method="POST">
+    <form action="{{ route('admin.projets.update', $projet) }}" method="POST" enctype="multipart/form-data">
         @csrf @method('PUT')
         <div class="mb-3">
             <label class="form-label">Titre</label>
@@ -25,6 +25,16 @@
             <input type="text" name="link" class="form-control" value="{{ old('link', $projet->link) }}">
         </div>
         <a href="{{ route('admin.projets.index') }}" class="btn btn-secondary">Annuler</a>
+        <div class="mb-3">
+            <label class="form-label">Image du projet</label>
+                @if($projet->image)
+                    <div class="mb-2">
+                        <img src="{{ asset('storage/'.$projet->image) }}" alt="Image actuelle" style="width:150px; border-radius:10px;">
+                    </div>
+                @endif
+                <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png">
+            <small class="text-muted">Laisser vide pour garder l'actuelle</small>
+        </div>
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-save"></i> Mettre à jour
         </button>

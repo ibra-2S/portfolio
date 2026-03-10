@@ -8,7 +8,7 @@
         <div class="row align-items-center">
             <div class="col-md-7">
                 <h1>Bonjour, je suis <span id="typing"></span><span class="cursor">|</span></h1>
-                <p class="lead mt-3">Étudiant en Informatique passionné par le développement web</p>
+                <p class="lead mt-3">Étudiant en Informatique passionné par le développement Full stack, la data  et les jeux vidéo. Je combine mes compétences techniques avec un engagement humanitaire en tant que Volontaire des Nations Unies pour créer des solutions qui ont un impact réel.</p>
                 <div class="mt-4 d-flex gap-3 flex-wrap">
                     <a href="{{ route('contact') }}" class="btn btn-primary btn-lg">
                         <i class="fas fa-envelope"></i> Me contacter
@@ -49,6 +49,9 @@
         <h2 class="section-title text-center" style="color:white;">À <span>Propos de Moi</span></h2>
         <div class="row align-items-center">
             <div class="col-md-6 fade-in">
+                <p style="color:#aaaaaa; font-size:1.05rem; line-height:1.8; margin-top:15px;">
+                    Étudiant en 5ème année à l'École Polytechnique des Ingénieurs en Génie Informatique Université Kofi Annan de Guinée, mes années d'études et de réalisation de projets m'ont permis de monter en compétence et de développer une vraie passion pour le développement Full Stack, la data et les jeux vidéo. Je combine mes compétences techniques avec un engagement humanitaire en tant que Volontaire des Nations Unies pour créer des solutions qui ont un impact réel.
+                </p>
                 <h4 style="color:#f5a623;" class="mb-4">INFOS PERSONEL</h4>
                 <div class="row">
                     <div class="col-6">

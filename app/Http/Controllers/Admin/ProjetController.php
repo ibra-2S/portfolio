@@ -19,32 +19,44 @@ class ProjetController extends Controller
         return view('admin.projets.create');
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'technologies' => 'required',
-        ]);
-
-        Projet::create($request->all());
-        return redirect()->route('admin.projets.index')->with('success', 'Projet ajouté !');
-    }
-
     public function edit(Projet $projet)
     {
         return view('admin.projets.edit', compact('projet'));
     }
 
-    public function update(Request $request, Projet $projet)
-    {
+    public function store(Request $request){
+    $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'technologies' => 'required',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('projets', 'public');
+        }
+
+        Projet::create($data);
+        return redirect()->route('admin.projets.index')->with('success', 'Projet ajouté !');
+    }
+
+    public function update(Request $request, Projet $projet){
         $request->validate([
             'title' => 'required',
             'description' => 'required',
             'technologies' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $projet->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('projets', 'public');
+        }
+
+        $projet->update($data);
         return redirect()->route('admin.projets.index')->with('success', 'Projet modifié !');
     }
 
