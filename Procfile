@@ -1,1 +1,1 @@
-web: php artisan migrate --force && php artisan tinker --execute="App\Models\User::create(['name'=>'Admin','email'=>'ibrahimsmh01@gmail.com','password'=>bcrypt('Soumahibra02%')]);" && php artisan storage:link && php artisan config:cache && php -S 0.0.0.0:$PORT -t public
+web: php artisan migrate --force && php artisan db:seed --class=AdminSeeder && php artisan storage:link && php artisan config:cache && php -S 0.0.0.0:$PORT -t public
